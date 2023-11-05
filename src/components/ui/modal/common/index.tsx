@@ -12,33 +12,24 @@ export function EditModal({ children, text, hideModal, handleSubmit }: IEditModa
                 {children}
             </Modal.Body>
             <Modal.Footer>
-                <button onClick={() => {
-                    handleSubmit()
-                    hideModal(undefined)
-                }}>Submit</button>
+                <button onClick={handleSubmit}>Submit</button>
             </Modal.Footer>
         </Modal>
     );
 }
 
-
-export function DeleteModal({ children, hideModal, deleteById , text }: IDeleteModalprops) {
+export function DeleteModal({ children, hideModal, handleDelete , text }: IDeleteModalprops) {
     return (
         <Modal onClose={hideModal}>
             <Modal.Header>
                 <h2>{text}</h2>
             </Modal.Header>
             <Modal.Body>
-                <h4 style={{ textAlign: "center", color: "red" }}>
                     {children}
-                </h4>
             </Modal.Body>
             <Modal.Footer>
                 <button
-                    onClick={() => {
-                        deleteById();
-                        hideModal(undefined);
-                    }}
+                    onClick={handleDelete}
                 >
                     Delete
                 </button>
@@ -50,7 +41,7 @@ export function DeleteModal({ children, hideModal, deleteById , text }: IDeleteM
 interface IDeleteModalprops{
     children : ReactNode;
     hideModal : (id : number | undefined) => void;
-    deleteById : () => void;
+    handleDelete : () => void;
     text : string
 }
 

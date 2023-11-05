@@ -31,18 +31,18 @@ const Modal: FC<ModalProps> & {
 }
 
 Modal.Header = ({ children, ...props }) => (
-  <div {...props} className="modal-header">{children}</div>
+  <div className="modal-header" {...props}  >{children}</div>
 );
 
 Modal.Body = ({ children, ...props }) => (
-  <div {...props} className="modal-body">{children}</div>
+  <div  className="modal-body" {...props}  >{children}</div>
 );
 
 Modal.Footer = ({ children, ...props }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { onClose } = useContext(ModalComponentContext) || {};  
   return (
-    <div {...props} className="modal-footer" style={{ display: "flex", justifyContent: "flex-end" }}>
+    <div  className="modal-footer" {...props}>
       <button className='closebutton' onClick={() => onClose(null)}>Close</button>
       {children}
     </div>

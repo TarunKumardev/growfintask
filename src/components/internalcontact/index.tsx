@@ -1,25 +1,25 @@
 //@ts-nocheck
-import { useContext, createContext, ReactNode, } from "react";
+import { useState, type ReactNode } from "react";
+
+// hooks
 import useArray from "../../hooks/useArray";
-import { useModal } from "../../provider/ModalProvider";
-import Table from "../ui/table";
-import EditComponent from "../editcompoent";
-import { ElemntContextType, Idata, TableRowProps } from "../../types";
-import { DeleteModal, EditModal } from "../ui/modal/common";
 import { useUpdateElement } from "../../hooks/useUpdate";
+import { useModal } from "../../provider/ModalProvider";
+import TableProvider, { useTable } from "../../provider/TableProvider";
 
-const ElementContext = createContext<ElemntContextType | undefined>(undefined);
+// components
+import Table from "../ui/table";
+import { DeleteModal, EditModal } from "../ui/modal/common";
+import EditComponent from "../editcompoent";
 
-function useElement(): ElemntContextType {
-    const context = useContext(ElementContext);
-    if (!context)
-        throw new Error("useElement must be used within a ElementContext");
-    return context;
-}
+//types
+import { Idata, TableRowProps } from "../../types";
+
+
 
 
 function TableRow({ element }: TableRowProps) {
-    const { showModal, updateById, hideModal, deleteById } = useElement();
+    const { showModal, updateById, hideModal, deleteById } = useTable();
     const handleEditClick = () =>
         showModal({
             component: (
@@ -35,24 +35,20 @@ function TableRow({ element }: TableRowProps) {
     const handelDelte = () =>
         showModal({
             component: (
-                <DeleteModal
-                    deleteById={() => deleteById(element.id)}
+                <DelteModalParent
+                    element={element}
+                    deleteById={deleteById}
                     hideModal={hideModal}
-                    text="delete internalcontact"
-                >
-                    <h4 style={{ textAlign: "center", color: "red" }}>
-                        Do you want to delete {element.name}
-                    </h4>
-                </DeleteModal>
+                />
             ),
-    });
+        });
 
     return (
-        <Table.Tr >
+        <Table.Tr>
             <Table.Td>
-                <div style={{ width: '50px', height: "50px", borderRadius: '50%', overflow: 'hidden' }}>
+                <div className='tableImageContainer'>
                     <img
-                        style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover' }}
+                        className='tableImage'
                         loading='eager'
                         src={element?.image}
                         alt='Avatar'
@@ -61,46 +57,68 @@ function TableRow({ element }: TableRowProps) {
             </Table.Td>
             <Table.Td>
                 <div>
-                    <h4 style={{ fontSize: "14px", fontWeight: "lighter" }}>
+                    <h4 className='tableHeader'>
                         {element.name}{" "}
                     </h4>
-                    <h5 style={{ fontSize: "12px", fontWeight: "lighter" }}>
+                    <h5 className='tableSubheader'>
                         {element.role}
                     </h5>
                 </div>
             </Table.Td>
             <Table.Td>{element.symbol}</Table.Td>
-            <Table.Td style={{ fontSize: "12px", fontWeight: "lighter" }}>
-                {" "}
+            <Table.Td className='tableSubheader'>
                 {element.email}
             </Table.Td>
             <Table.Td>
-                <Table.Td>
-                    <button className="actionBtn" onClick={handleEditClick}>
-                        Edit
-                    </button>
-                </Table.Td>
-                <Table.Td>
-                    <button className="actionBtn" onClick={handelDelte}>
-                        Delete
-                    </button>
-                </Table.Td>
+                <button className="actionBtn" onClick={handleEditClick}>
+                    Edit
+                </button>
+            </Table.Td>
+            <Table.Td>
+                <button className="actionBtn" onClick={handelDelte}>
+                    Delete
+                </button>
             </Table.Td>
         </Table.Tr>
     );
 }
 
 function EditModalParent({ element, updateById, hideModal }: EditModalProps) {
+    const [_, setErrors] = useState({});
     const { updatedElement, handleInputChange, handleSubmit } = useUpdateElement(
         element,
         updateById
     );
+
+    const validateForm = () => {
+        const newErrors = { name: "", email: "" };
+        if (!updatedElement.name.trim()) newErrors.name = "Name is required";
+        if (!updatedElement.email.trim()) newErrors.email = "Email is required";
+        return newErrors;
+    };
+
+    const handleFormSubmit = async () => {
+        const validationErrors = validateForm();
+        if (validationErrors?.name || validationErrors?.email) {
+            setErrors(validationErrors);
+            return;
+        }
+
+        try {
+            //! if we have integrated api we can have a api call here to update
+            // await updateById(updatedElement._id, updatedElement);
+            handleSubmit()
+            hideModal();
+        } catch (error) {
+            alert('Update failed. Try again.');
+        }
+    };
+
     return (
         <EditModal
-            //@ts-ignore
             updateById={updateById}
             hideModal={hideModal}
-            handleSubmit={handleSubmit}
+            handleSubmit={handleFormSubmit}
             text="Edit internal contact"
         >
             <EditComponent data={updatedElement} onchange={handleInputChange} />
@@ -108,25 +126,43 @@ function EditModalParent({ element, updateById, hideModal }: EditModalProps) {
     );
 }
 
+function DelteModalParent({ element, deleteById, hideModal }: EditModalProps) {
+    const handleDelete = async () => {
+
+        try {
+            //! if we have integrated api we can have a api call here to delete the id
+            // await updateById(updatedElement._id, updatedElement);
+            deleteById(element.id)
+            hideModal();
+        } catch (error) {
+            alert('Update failed. Try again.');
+        }
+    };
+    return (
+        <DeleteModal
+            handleDelete={handleDelete}
+            hideModal={hideModal}
+            text="delete internalcontact"
+        >
+            <h4 className="error">
+                Do you want to delete {element.name}
+            </h4>
+        </DeleteModal>
+    )
+}
 
 
-export default function InternalContact({data} ) {
+
+export default function InternalContact({ data }) {
     const { showModal, hideModal } = useModal();
     const { state, updateById, deleteById } = useArray<Idata>(data);
-
     return (
         <div>
-            <ElementContext.Provider
+            <TableProvider
                 value={{ updateById, showModal, hideModal, deleteById }}
             >
                 <div className="card">
-                    <h3
-                        style={{
-                            paddingBottom: "5px",
-                            borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
-                            color: "rgb(18,3,56)",
-                        }}
-                    >
+                    <h3 className="card-title"  >
                         Internal contact
                     </h3>
                     <Table>
@@ -136,16 +172,8 @@ export default function InternalContact({data} ) {
                             ))}
                         </Table.Tbody>
                     </Table>
-                    <div
-                        style={{
-                            paddingTop: "5px",
-                            borderTop: "1px solid rgba(0, 0, 0, 0.1)",
-                            color: "rgb(18,3,56)",
-                        }}
-                    >
-                    </div>
                 </div>
-            </ElementContext.Provider>
+            </TableProvider>
         </div>
     );
 }

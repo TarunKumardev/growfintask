@@ -7,6 +7,17 @@ export type ElemntContextType = {
     deleteById : (id: number) => void
 };
 
+
+export type ElemntContextType = {
+    updateById: (id: number, newElement: Element) => void;
+    showModal: () => void;
+    hideModal: (id: number | undefined) => void;
+    deleteById : (id: number) => void
+};
+
+
+
+
 export type TableRowProps = {
     element: InternalData ;
 }

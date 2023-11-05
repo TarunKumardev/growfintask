@@ -93,6 +93,12 @@ tr {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Minimal box shadow */
   padding: 20px;
   margin: 20px;
+}
+
+.card-title{
+  padding: 5px;
+  border-bottom: "1px solid rgba(0, 0, 0, 0.1)";
+  color: "rgb(18,3,56)",
 
 }
 .modal-header{
@@ -106,6 +112,8 @@ tr {
   padding: 10px;
 }
 .modal-footer{
+  display: flex;
+  justify-content: flex-end;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -115,6 +123,34 @@ tr {
   display: flex;
   justify-content: center;
 }
+
+
+/* Table */
+
+.tableImageContainer {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.tableImage {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.tableHeader {
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+.tableSubheader {
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+
 
 @media screen and (max-width : 1024px) {
   .container{
@@ -129,4 +165,10 @@ tr {
   .container{
     align-items: normal;
   }
+}
+
+/* modal dlete */
+.error {
+  text-align: center;
+  color: red;
 }
