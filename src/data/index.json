@@ -1,0 +1,54 @@
+
+   [
+    {
+      "id": 1,
+      "image": "https://images.pexels.com/photos/18937801/pexels-photo-18937801/free-photo-of-wanna-play-football-or-drone.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+      "name": "Tarun",
+      "role": "Account Manager",
+      "designation": ["Collections Manager"],
+      "icon": "flash",
+      "email": "jjagannathbehera50@gmail.com"
+    },
+    {
+      "id": 2,
+      "image": "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
+      "name": "kumar",
+      "role": "Sales Rep",
+      "designation": ["Collections Manager"],
+      "icon": "flash",
+      "email": "jjagannathbehera50@gmail.com"
+    },
+    {
+      "id": 3,
+      "image": "https://images.pexels.com/photos/18937801/pexels-photo-18937801/free-photo-of-wanna-play-football-or-drone.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+      "name": "Raju",
+      "role": "software Engineer",
+      "designation": ["Collections Manager"],
+      "icon": "flash",
+      "email": "jjagannathbehera50@gmail.com"
+    },
+    {
+      "id": 4,
+      "image": "https://images.pexels.com/photos/18937801/pexels-photo-18937801/free-photo-of-wanna-play-football-or-drone.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+      "name": "Raju",
+      "role": "Frontend Engineer",
+      "icon": "flash",
+      "email": "jjagannathbehera50@gmail.com"
+    },
+    {
+      "id": 5,
+      "image": "https://images.pexels.com/photos/18937801/pexels-photo-18937801/free-photo-of-wanna-play-football-or-drone.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+      "name": "Raju",
+      "role": "Backend Developer",
+      "icon": "flash",
+      "email": "jjagannathbehera50@gmail.com"
+    },
+    {
+      "id": 6,
+      "image": "https://images.pexels.com/photos/18937801/pexels-photo-18937801/free-photo-of-wanna-play-football-or-drone.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+      "name": "Raju",
+      "designation": ["Collections Manager"],
+      "icon": "flash",
+      "email": "jjagannathbehera50@gmail.com"
+    }
+  ]
