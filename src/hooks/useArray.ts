@@ -3,7 +3,7 @@ import  { useState, useCallback } from 'react';
 const useArray = <T extends {id : number}>(initialArray: T[] = []) => {
   const [state, setState] = useState(initialArray);
 
-  const updateById = useCallback((id: number, newData: Partial<T>) => {
+  const updateById = useCallback((id: number, newData: T) => {
     setState((prevArray) =>
       prevArray.map((item) => (item.id === id ? { ...item, ...newData } : item))
     );

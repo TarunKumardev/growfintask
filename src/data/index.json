@@ -7,7 +7,9 @@
       "role": "Account Manager",
       "designation": ["Collections Manager"],
       "icon": "flash",
-      "email": "jjagannathbehera50@gmail.com"
+      "email": "jjagannathbehera50@gmail.com",
+      "phonenumber" :  9040511516,
+      "mobilenumber" : 8093220629
     },
     {
       "id": 2,
@@ -16,7 +18,9 @@
       "role": "Sales Rep",
       "designation": ["Collections Manager"],
       "icon": "flash",
-      "email": "jjagannathbehera50@gmail.com"
+      "email": "jjagannathbehera50@gmail.com",
+      "phonenumber" :  79778785018,
+      "mobilenumber" : 9827779609
     },
     {
       "id": 3,
@@ -25,7 +29,9 @@
       "role": "software Engineer",
       "designation": ["Collections Manager"],
       "icon": "flash",
-      "email": "jjagannathbehera50@gmail.com"
+      "email": "jjagannathbehera50@gmail.com",
+       "phonenumber" :  1111111111,
+       "mobilenumber" : 2222222222
     },
     {
       "id": 4,
@@ -33,7 +39,9 @@
       "name": "Raju",
       "role": "Frontend Engineer",
       "icon": "flash",
-      "email": "jjagannathbehera50@gmail.com"
+      "email": "jjagannathbehera50@gmail.com",
+      "phonenumber" :  33333333333,
+      "mobilenumber" : 44444444444
     },
     {
       "id": 5,
@@ -41,7 +49,9 @@
       "name": "Raju",
       "role": "Backend Developer",
       "icon": "flash",
-      "email": "jjagannathbehera50@gmail.com"
+      "email": "jjagannathbehera50@gmail.com",
+      "phonenumber" :  5555555555,
+      "mobilenumber" : 6666666666
     },
     {
       "id": 6,
@@ -49,6 +59,8 @@
       "name": "Raju",
       "designation": ["Collections Manager"],
       "icon": "flash",
-      "email": "jjagannathbehera50@gmail.com"
+      "email": "jjagannathbehera50@gmail.com",
+      "phonenumber" : 7777777777,
+      "mobilenumber" : 888888888
     }
   ]

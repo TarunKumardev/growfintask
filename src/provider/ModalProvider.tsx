@@ -62,5 +62,5 @@ interface ModalContent {
 
 interface ModalContextType {
     showModal: (modalContent: ModalContent) => void;
-    hideModal: (modalId: number | undefined) => void;
+    hideModal: (modalId: number | null) => void;
 }

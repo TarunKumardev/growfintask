@@ -114,6 +114,7 @@ tr {
 .modal-footer{
   display: flex;
   justify-content: flex-end;
+  padding: 2px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -171,4 +172,16 @@ tr {
 .error {
   text-align: center;
   color: red;
+}
+
+.delete-btn{
+  background: red;
+  color: white;
+
+}
+
+.edit-btn{
+  background: rgb(83,29,171);
+  color: white;
+
 }

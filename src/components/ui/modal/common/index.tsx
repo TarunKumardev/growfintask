@@ -12,7 +12,10 @@ export function EditModal({ children, text, hideModal, handleSubmit }: IEditModa
                 {children}
             </Modal.Body>
             <Modal.Footer>
-                <button onClick={handleSubmit}>Submit</button>
+                <button  onClick={handleSubmit}
+                                    className="edit-btn"
+                
+                >Submit</button>
             </Modal.Footer>
         </Modal>
     );
@@ -27,9 +30,10 @@ export function DeleteModal({ children, hideModal, handleDelete , text }: IDelet
             <Modal.Body>
                     {children}
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer  >
                 <button
                     onClick={handleDelete}
+                    className="delete-btn"
                 >
                     Delete
                 </button>
@@ -48,8 +52,8 @@ interface IDeleteModalprops{
 
 interface IEditModalprops{
     children : ReactNode;
-    hideModal : (id : number | undefined) => void;
-    deleteById : () => void;
+    hideModal ?: (id : number | undefined) => void;
+    deleteById ?: () => void;
     text :string;
     handleSubmit : () => void;
 }

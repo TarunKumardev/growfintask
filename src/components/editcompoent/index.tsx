@@ -1,4 +1,5 @@
 import { Idata } from "../../types";
+import staticjsondata from "../../data/index.json"
 
 function Editcomponent({ data, onchange }: { data: Idata, onchange: (value: React.ChangeEvent<HTMLInputElement>) => void }) {
   return (
@@ -6,14 +7,18 @@ function Editcomponent({ data, onchange }: { data: Idata, onchange: (value: Reac
       <label>
         User:
         <br />
-        <input
-          type="text"
-          name="name"
-          placeholder="username"
+        <select
           className="edit-input"
           value={data.name}
-          onChange={onchange}
-        />
+          name="name"
+          onInput={onchange}
+        >
+          {staticjsondata.map((data) => {
+            return (
+              <option key={data.id} value={data.name} >{data.name}</option>
+            )
+          })}
+        </select>
       </label>
       <label>
         User Email:
